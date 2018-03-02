@@ -52,19 +52,37 @@ public class ReviewSiteFSMappingTest {
 		Review review = new Review("TEST", "test", category);
 		review = reviewRepo.save(review);
 		long reviewId = review.getId();
-//		Review review2 = new Review("TEST2", "test2", category);
-//		review2 = reviewRepo.save(review2);
-//		long reviewId2 = review2.getId();
+		Review review2 = new Review("TEST2", "test2", category);
+		review2 = reviewRepo.save(review2);
+		long reviewId2 = review2.getId();
 
+		long categoryId = category.getId(); 
 		entityManager.flush();
 		entityManager.clear();
-
-		review = reviewRepo.findOne(reviewId);
+		
+//		review = reviewRepo.findOne(reviewId);
 //		review2 = reviewRepo.findOne(reviewId2);
-		assertThat(review.getCategory(), is(category));
-		// assertThat(category.getReviews(), containsInAnyOrder(review, review2));
+		category = categoryRepo.findOne(categoryId);
+//		assertThat(review.getCategory(), is(category));
+		assertThat(category.getReviews(), containsInAnyOrder(review, review2));
 	}
 
+	@Test
+	public void shouldSaveCategoryToReviewRelationship() {
+		Category category = new Category("TEST");
+		category = categoryRepo.save(category);
+
+		Review review = new Review("TEST", "test", category);
+		review = reviewRepo.save(review);
+		long reviewId = review.getId();
+	
+		entityManager.flush();
+		entityManager.clear();
+		
+		review = reviewRepo.findOne(reviewId);
+		
+		assertThat(review.getCategory(), is(category));
+	}
 	@Test
 	public void shouldSaveAndLoadTag() {
 		Tag tag = tagRepo.save(new Tag("test"));
@@ -75,5 +93,23 @@ public class ReviewSiteFSMappingTest {
 
 		tag = tagRepo.findOne(tagId);
 		assertThat(tag.getTag(), is("test"));
+	}
+	
+	@Test
+	public void shouldEstablishReviewTagRelationship() {
+		Category category = categoryRepo.save(new Category("TEST")); 
+		
+		Tag tag = tagRepo.save(new Tag("tag")); 
+		Tag tag2 = tagRepo.save(new Tag("tag2")); 
+		
+		Review review = new Review("title","review",category,tag,tag2); 
+		reviewRepo.save(review); 
+		long reviewId = review.getId(); 
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		review = reviewRepo.findOne(reviewId);
+		assertThat(review.getTags(),containsInAnyOrder(tag,tag2)); 
 	}
 }

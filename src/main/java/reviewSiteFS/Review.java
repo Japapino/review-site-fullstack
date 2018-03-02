@@ -48,6 +48,9 @@ public class Review {
 		return category; 
 	}
 	
+	public Collection<Tag> getTags(){
+		return tag; 
+	}
 	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();

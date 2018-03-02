@@ -1,5 +1,6 @@
 package reviewSiteFS;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -18,7 +19,9 @@ public class Category {
 	private Collection<Review> reviews;
 	private String type; 
 	
-	private Category() {}
+	private Category() {
+		
+	}
 	
 	public Category(String type){
 		this.type = type; 
