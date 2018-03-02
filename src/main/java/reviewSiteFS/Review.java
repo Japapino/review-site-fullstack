@@ -12,15 +12,13 @@ public class Review {
 	
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
 	
 	@ManyToOne
 	private Category category; 
 	
 	private String name; 
 	private String review; 
-//	private ArrayList<String> tags = new ArrayList<>();
-//	private String imagePath;
 	
 	private Review() {}
 	

@@ -49,15 +49,16 @@ public class ReviewSiteFSMappingTest {
 		long categoryId = category.getId(); 
 		
 		Review review = new Review("TEST","test",category); 
-		reviewRepo.save(review); 
+		review = reviewRepo.save(review);
+		long reviewId = review.getId();
 		Review review2 = new Review("TEST2","test2",category); 
-		reviewRepo.save(review2); 
+		review2 = reviewRepo.save(review2); 
 		
 		entityManager.flush();
 		entityManager.clear();
 		
-		category = categoryRepo.findOne(categoryId); 
-		assertThat(category.getReviews(), containsInAnyOrder(review,review2)); 
+		review = reviewRepo.findOne(reviewId); 
+		assertThat(review.getCategory(), is(category)); 
 	}
 
 }
