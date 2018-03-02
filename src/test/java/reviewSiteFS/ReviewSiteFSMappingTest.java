@@ -1,10 +1,14 @@
 package reviewSiteFS;
 
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Collection;
+
 import javax.annotation.Resource;
 
+import org.hamcrest.Matcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -21,21 +25,39 @@ public class ReviewSiteFSMappingTest {
 	private ReviewRepository reviewRepo; 
 	
 	@Resource
-	private CategoryRepository CategoryRepo; 
+	private CategoryRepository categoryRepo; 
 	
 	@Test
-	public void shouldSaveAndLoadReview() {
-		Review undertest = new Review("TEST","Test");
-		undertest = reviewRepo.save(undertest); 
-		long reviewId = undertest.getId(); 
+	public void shouldSaveAndLoadCategory() {
+		Category category = new Category("TEST");
+		category = categoryRepo.save(category); 
+		long categoryId = category.getId(); 
 
 		entityManager.flush();
 		entityManager.clear();
 		
-		undertest = reviewRepo.findOne(reviewId);
+		category = categoryRepo.findOne(categoryId);
 		
-		assertThat(undertest.getReview(), is("test"));
+		assertThat(category.getCategory(), is("TEST"));
 	}
 	
+	
+	@Test
+	public void shouldSaveReviewToCategoryRelationship() {
+		Category category = new Category("TEST");
+		category = categoryRepo.save(category); 
+		long categoryId = category.getId(); 
+		
+		Review review = new Review("TEST","test",category); 
+		reviewRepo.save(review); 
+		Review review2 = new Review("TEST2","test2",category); 
+		reviewRepo.save(review2); 
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		category = categoryRepo.findOne(categoryId); 
+		assertThat(category.getReviews(), containsInAnyOrder(review,review2)); 
+	}
 
 }

@@ -1,21 +1,21 @@
 package reviewSiteFS;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 @Entity
 public class Review {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	private Long id;
 	
-	@ManyToMany
-	private Collection<Category> category; 
+	@ManyToOne
+	private Category category; 
 	
 	private String name; 
 	private String review; 
@@ -24,9 +24,10 @@ public class Review {
 	
 	private Review() {}
 	
-	public Review(String name, String review) {
+	public Review(String name, String review, Category category) {
 		this.name = name;
 		this.review = review; 
+		this.category = category; 
 	}
 	
 	public long getId() {
@@ -39,6 +40,10 @@ public class Review {
 	
 	public String getReview() {
 		return review; 
+	}
+	
+	public Category getCategory(){
+		return category; 
 	}
 	
 	@Override
