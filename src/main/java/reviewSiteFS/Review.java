@@ -17,15 +17,19 @@ public class Review {
 	@ManyToOne
 	private Category category; 
 	
+	@ManyToMany
+	private Collection<Tag> tag; 
+	
 	private String name; 
 	private String review; 
 	
 	private Review() {}
 	
-	public Review(String name, String review, Category category) {
+	public Review(String name, String review, Category category, Tag...tags) {
 		this.name = name;
 		this.review = review; 
 		this.category = category; 
+		this.tag = Arrays.asList(tags); 
 	}
 	
 	public long getId() {

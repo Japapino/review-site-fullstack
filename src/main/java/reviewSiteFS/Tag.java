@@ -6,36 +6,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Category {
+public class Tag {
 	@Id
 	@GeneratedValue
 	private long id; 
 	
-	@OneToMany(mappedBy="category")
+	private String tag; 
+	
+	@ManyToMany(mappedBy = "tag")
 	private Collection<Review> reviews;
-	private String type; 
 	
-	private Category() {}
+	private Tag() {}
 	
-	public Category(String type){
-		this.type = type; 
+	public Tag(String tag) {
+		this.tag = tag; 
 	}
-	
-	public String getCategory() {
-		return type; 
-	}
-	
 	public long getId() {
 		return id; 
 	}
 	
+	public String getTag() {
+		return tag; 
+	}
 	public Collection<Review> getReviews(){
 		return reviews; 
 	}
-	
 	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();
@@ -49,7 +46,7 @@ public class Category {
 		if (obj == null || getClass() != obj.getClass()) {
 			return false;
 		}
-		return id == ((Category) obj).id;
+		return id == ((Tag) obj).id;
 	}
 
 }
