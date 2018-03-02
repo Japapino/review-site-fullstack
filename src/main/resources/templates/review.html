@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>A Review</title>
+<style>
+body {
+	background-color: darkkhaki;
+}
+
+h1 {
+	color: midnightblue;
+}
+
+p {
+	color: black;
+}
+
+p {
+	border: 1px solid dimgray;
+	margin: 50px;
+	padding: 30px;
+}
+</style>
+</head>
+
+<body>
+
+	<div th:each="review: ${reviews}">
+		<header>
+			<h1>
+				<span th:text="${review.Name}"></span>
+			</h1>
+		</header>
+		<img th:src="${review.image}" style="height: 300px; width: auto;" />
+
+		<p th:text="${review.name}" />
+		<table>
+			<thead colspan="2">Tags
+			</thead>
+		</table>
+		<p th:text="${review.review}" />
+		<a href="http://localhost:8080/reviews">Back to home</a>
+	</div>
+
+</body>
+</html>

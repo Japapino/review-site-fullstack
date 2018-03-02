@@ -22,6 +22,7 @@ public class Review {
 	
 	private String name; 
 	private String review; 
+	private String image; 
 	
 	private Review() {}
 	
@@ -30,6 +31,10 @@ public class Review {
 		this.review = review; 
 		this.category = category; 
 		this.tag = Arrays.asList(tags); 
+	}
+	
+	public void setImage(String path) {
+		this.image = path; 
 	}
 	
 	public long getId() {
@@ -50,6 +55,10 @@ public class Review {
 	
 	public Collection<Tag> getTags(){
 		return tag; 
+	}
+	
+	public String getImage() {
+		return image; 
 	}
 	@Override
 	public int hashCode() {
