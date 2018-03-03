@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>By Category</title>
+</head>
+<body>
+	<h1>Filter by Category</h1>
+	<ul th:each="review:${review}">
+		<li><span th:text=${review.Name}/>
+	</ul>
+
+</body>
+</html>

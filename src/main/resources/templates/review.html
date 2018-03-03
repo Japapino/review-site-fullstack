@@ -1,39 +1,20 @@
 <!DOCTYPE HTML>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 
 <head>
-<title>A Review</title>
-<style>
-body {
-	background-color: darkkhaki;
-}
-
-h1 {
-	color: midnightblue;
-}
-
-p {
-	color: black;
-}
-
-p {
-	border: 1px solid dimgray;
-	margin: 50px;
-	padding: 30px;
-}
-</style>
+	<title>A Review</title>
 </head>
 
 <body>
 
 	<div th:each="review: ${reviews}">
 		<header>
-			<h1>
-				<span th:text="${review.Name}"></span>
-			</h1>
+			<h1><span th:text="${review.Name}"/></h1>
+
+
+			<img th:src="${review.image}" style="height: 300px; width: auto;" />
 		</header>
-		<img th:src="${review.image}" style="height: 300px; width: auto;" />
 
 		<p th:text="${review.name}" />
 		<table>

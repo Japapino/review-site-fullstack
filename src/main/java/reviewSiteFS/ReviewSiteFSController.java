@@ -28,6 +28,12 @@ public class ReviewSiteFSController {
 			model.addAttribute("reviews", reviewRepo.findOne(id));
 			return "review";
 		}
+		
+		@RequestMapping(value = "category")
+		public String getMemoirs(@RequestParam Category category, Model model) {
+			model.addAttribute("category",reviewRepo.findByCategory(category));
+			return "category";
+		}
 }
 
 

@@ -1,12 +1,15 @@
 package reviewSiteFS;
 
 import javax.annotation.Resource;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ReviewPopulator  implements CommandLineRunner{
+	
+	private Logger log = LoggerFactory.getLogger(ReviewPopulator.class); 
 
 	@Resource
 	private ReviewRepository reviewRepo; 
@@ -23,18 +26,27 @@ public class ReviewPopulator  implements CommandLineRunner{
 		historicalDocumentary = categoryRepo.save(historicalDocumentary); 
 		sportsDocumentary = categoryRepo.save(sportsDocumentary); 
 		
-		Review superman = new Review("Superman","Super review",memoir); 
-		superman = reviewRepo.save(superman); 
-		Review sherlock = new Review("Sherlock","Sherlock review",historicalDocumentary); 
-		sherlock = reviewRepo.save(sherlock); 
-		Review batman = new Review("Batman","Batman review",sportsDocumentary); 
-		batman = reviewRepo.save(batman); 
-
 		
+
+		Review superman = new Review("Superman","Super review",memoir); 
+		Review sherlock = new Review("Sherlock","Sherlock review",historicalDocumentary); 
+		Review batman = new Review("Batman","Batman review",sportsDocumentary); 
+
 		sherlock.setImage("./images/sherlock.jpg");
 		superman.setImage("./images/superman.png");
 		batman.setImage("./images/batman.jpg");
+
+		superman = reviewRepo.save(superman); 
+		sherlock = reviewRepo.save(sherlock); 
+		batman = reviewRepo.save(batman); 
 		
+		
+		log.info("Review found with findByCategory('memoir'):");
+		log.info("--------------------------------------------");
+		for (Review bauer : reviewRepo.findByCategory(memoir)) {
+			log.info(bauer.toString());
+		}
+		log.info("");
 	}
 	
 

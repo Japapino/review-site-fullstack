@@ -60,6 +60,7 @@ public class Review {
 	public String getImage() {
 		return image; 
 	}
+	
 	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();

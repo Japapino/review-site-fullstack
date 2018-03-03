@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-<title>Review Repository</title>
+	<title>Review Repository</title>
 </head>
 
 <body>
 	<header>A list of Reviews</header>
 
+
+	<h2>By category: </h2>
+	
+	<h2>All Reviews</h2>
 	<ul th:each="review:${reviews}">
 		<li>
-		<a th:href="@{/review(id=${review.id})}" th:text="${review.name}"/>
-			<span th:text="': ' + ${review.review}" />
-			</li>
+			<a th:href="@{/review(id=${review.id})}" th:text="${review.name}"/>
+		</li>
 	</ul>
+	
+	<a th:href="@{/category(category='memoir')}" th:text="Categories"/>
 
 </body>
 </html>
