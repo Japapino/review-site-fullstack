@@ -43,8 +43,8 @@ public class ReviewPopulator  implements CommandLineRunner{
 		
 		log.info("Review found with findByCategory('memoir'):");
 		log.info("--------------------------------------------");
-		for (Review bauer : reviewRepo.findByCategory(memoir)) {
-			log.info(bauer.toString());
+		for (Review review : reviewRepo.findByCategoryId(memoir.getId())) {
+			log.info(review.getName());
 		}
 		log.info("");
 	}

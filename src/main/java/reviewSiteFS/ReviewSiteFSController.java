@@ -30,8 +30,8 @@ public class ReviewSiteFSController {
 		}
 		
 		@RequestMapping(value = "category")
-		public String getMemoirs(@RequestParam Category category, Model model) {
-			model.addAttribute("category",reviewRepo.findByCategory(category));
+		public String getMemoirs(@RequestParam long id, Model model) {
+			model.addAttribute("category",reviewRepo.findByCategoryId(id));
 			return "category";
 		}
 }
