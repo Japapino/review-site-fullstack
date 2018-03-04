@@ -20,9 +20,10 @@
 
 		<p th:text="${review.review}" />
 		
-	<ul th:each="tag:${review.tags}">
+	<h1>Tags</h1>	
+	<ul th:each="itag:${review.tags}">
 		<li>
-			<span th:text="${tag.tag}"/>
+			<span th:text="${itag.tag}"/>
 		</li>
 	</ul>
 
