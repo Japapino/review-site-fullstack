@@ -8,19 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class ReviewTag {
+public class Tag {
 	@Id
 	@GeneratedValue
 	private long id; 
 	
 	private String tag; 
 	
-	@ManyToMany(mappedBy = "tag")
+	@ManyToMany(mappedBy = "tags")
 	private Collection<Review> reviews;
 	
-	private ReviewTag() {}
+	private Tag() {}
 	
-	public ReviewTag(String tag) {
+	public Tag(String tag) {
 		this.tag = tag; 
 	}
 	public long getId() {
@@ -46,7 +46,7 @@ public class ReviewTag {
 		if (obj == null || getClass() != obj.getClass()) {
 			return false;
 		}
-		return id == ((ReviewTag) obj).id;
+		return id == ((Tag) obj).id;
 	}
 
 }

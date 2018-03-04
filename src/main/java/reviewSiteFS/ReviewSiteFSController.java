@@ -1,5 +1,7 @@
 package reviewSiteFS;
 
+import java.util.Collection;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,7 @@ public class ReviewSiteFSController {
 		CategoryRepository categoryRepo; 
 		
 		@Resource
-		CategoryRepository tagRepo; 
+		TagRepository tagRepo; 
 		
 		
 		@RequestMapping(value = "reviews")
@@ -28,7 +30,9 @@ public class ReviewSiteFSController {
 		
 		@RequestMapping("review")
 		public String getAReview(@RequestParam long id, Model model) {
-			model.addAttribute("reviews", reviewRepo.findOne(id));
+			Collection<Tag> selectedTags = reviewRepo.findOne(id).getTags();  
+			model.addAttribute("selectedTags", selectedTags);
+			model.addAttribute("review",reviewRepo.findOne(id));
 			return "review";
 		}
 		

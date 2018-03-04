@@ -85,7 +85,7 @@ public class ReviewSiteFSMappingTest {
 	}
 	@Test
 	public void shouldSaveAndLoadTag() {
-		ReviewTag tag = tagRepo.save(new ReviewTag("test"));
+		Tag tag = tagRepo.save(new Tag("test"));
 
 		long tagId = tag.getId();
 		entityManager.flush();
@@ -99,8 +99,8 @@ public class ReviewSiteFSMappingTest {
 	public void shouldEstablishReviewTagRelationship() {
 		Category category = categoryRepo.save(new Category("TEST")); 
 		
-		ReviewTag tag = tagRepo.save(new ReviewTag("tag")); 
-		ReviewTag tag2 = tagRepo.save(new ReviewTag("tag2")); 
+		Tag tag = tagRepo.save(new Tag("tag")); 
+		Tag tag2 = tagRepo.save(new Tag("tag2")); 
 		
 		Review review = new Review("title","review",category,tag,tag2); 
 		reviewRepo.save(review); 

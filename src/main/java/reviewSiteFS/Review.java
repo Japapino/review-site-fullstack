@@ -18,7 +18,7 @@ public class Review {
 	private Category category; 
 	
 	@ManyToMany
-	private Collection<ReviewTag> tag; 
+	private Collection<Tag> tags; 
 	
 	private String name; 
 	private String review; 
@@ -26,11 +26,11 @@ public class Review {
 	
 	private Review() {}
 	
-	public Review(String name, String review, Category category, ReviewTag...tags) {
+	public Review(String name, String review, Category category, Tag...tags) {
 		this.name = name;
 		this.review = review; 
 		this.category = category; 
-		this.tag = Arrays.asList(tags); 
+		this.tags = Arrays.asList(tags); 
 	}
 	
 	public void setImage(String path) {
@@ -53,13 +53,14 @@ public class Review {
 		return category; 
 	}
 	
-	public Collection<ReviewTag> getTags(){
-		return tag; 
+	public Collection<Tag> getTags(){
+		return tags; 
 	}
 	
 	public String getImage() {
 		return image; 
 	}
+	
 	
 	@Override
 	public int hashCode() {

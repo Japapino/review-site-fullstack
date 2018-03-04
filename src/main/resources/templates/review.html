@@ -9,7 +9,7 @@
 
 <body>
 
-	<div th:each="review: ${reviews}">
+	
 		<header>
 			<h1><span th:text="${review.Name}"/></h1>
 
@@ -19,10 +19,15 @@
 		<p th:text="${review.name}" />
 
 		<p th:text="${review.review}" />
+		
+	<ul th:each="tag:${review.tags}">
+		<li>
+			<span th:text="${tag.tag}"/>
+		</li>
+	</ul>
 
 
 		<a href="http://localhost:8080/reviews">Back to home</a>
-	</div>
 
 </body>
 </html>
