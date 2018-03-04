@@ -17,6 +17,7 @@ public class ReviewPopulator  implements CommandLineRunner{
 	@Resource
 	private CategoryRepository categoryRepo; 
 	
+	
 	@Override
 	public void run(String... args) throws Exception {
 		Category memoir = new Category("Memoir");

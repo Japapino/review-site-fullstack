@@ -16,24 +16,33 @@ public class ReviewSiteFSController {
 		@Resource
 		CategoryRepository categoryRepo; 
 		
+		@Resource
+		CategoryRepository tagRepo; 
+		
 		
 		@RequestMapping(value = "reviews")
-		public String getAllReviews(Model model) {
+		public String getAllReviews(Model model, Model model1) {
 			model.addAttribute("reviews",reviewRepo.findAll());
 			return "reviews";
 		}
 		
 		@RequestMapping("review")
-		public String getAReview(@RequestParam Long id, Model model) {
+		public String getAReview(@RequestParam long id, Model model) {
 			model.addAttribute("reviews", reviewRepo.findOne(id));
 			return "review";
 		}
 		
-		@RequestMapping(value = "category")
-		public String getMemoirs(@RequestParam long id, Model model) {
-			model.addAttribute("category",reviewRepo.findByCategoryId(id));
-			return "category";
+		@RequestMapping(value="categories")
+		public String getCategories(Model model) {
+			model.addAttribute("categories",categoryRepo.findAll());
+			return "categories";
 		}
+		
+//		@RequestMapping("category")
+//		public String getMemoirs(@RequestParam long id, Model model) {
+//			model.addAttribute("category",categoryRepo.findOne(id));
+//			return "category";
+//		}
 }
 
 
