@@ -18,7 +18,7 @@ public class Review {
 	private Category category; 
 	
 	@ManyToMany
-	private Collection<Tag> tag; 
+	private Collection<ReviewTag> tag; 
 	
 	private String name; 
 	private String review; 
@@ -26,7 +26,7 @@ public class Review {
 	
 	private Review() {}
 	
-	public Review(String name, String review, Category category, Tag...tags) {
+	public Review(String name, String review, Category category, ReviewTag...tags) {
 		this.name = name;
 		this.review = review; 
 		this.category = category; 
@@ -53,7 +53,7 @@ public class Review {
 		return category; 
 	}
 	
-	public Collection<Tag> getTags(){
+	public Collection<ReviewTag> getTags(){
 		return tag; 
 	}
 	

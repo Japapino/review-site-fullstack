@@ -4,9 +4,12 @@
 <title>Category</title>
 </head>
 <body>
+	<h1>Reviews by Category</h1>
+
 	<ul th:each="review:${reviews}">
 		<li>
-			<a th:ref="@{/review(id=${review.id})}" th:text="${review.name}"></a>
+			<img th:src="${review.image}" style="height: 50px; width: auto;" />
+			<a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a>
 		</li>
 	</ul>
 	<div>

@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ReviewPopulator  implements CommandLineRunner{
 	
-	private Logger log = LoggerFactory.getLogger(ReviewPopulator.class); 
-
 	@Resource
 	private ReviewRepository reviewRepo; 
 	

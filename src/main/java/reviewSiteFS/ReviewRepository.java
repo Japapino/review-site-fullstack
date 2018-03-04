@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface ReviewRepository extends CrudRepository<Review, Long>{
 	
 	Collection<Review> findByCategory(Category category); 
+	Collection<Review> findByReviewTag(ReviewTag tag); 
 	
 	@Override
 	Set<Review> findAll();
