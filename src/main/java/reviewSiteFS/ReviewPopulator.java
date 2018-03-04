@@ -41,13 +41,6 @@ public class ReviewPopulator  implements CommandLineRunner{
 		sherlock = reviewRepo.save(sherlock); 
 		batman = reviewRepo.save(batman); 
 		
-		
-		log.info("Review found with findByCategory('memoir'):");
-		log.info("--------------------------------------------");
-		for (Review review : reviewRepo.findByCategoryId(memoir.getId())) {
-			log.info(review.getName());
-		}
-		log.info("");
 	}
 	
 

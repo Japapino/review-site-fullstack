@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReviewRepository extends CrudRepository<Review, Long>{
 	
-	Collection<Review> findByCategoryId(long id); 
+	Collection<Review> findByCategory(Category category); 
 	
 	@Override
 	Set<Review> findAll();

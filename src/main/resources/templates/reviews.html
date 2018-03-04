@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Review Repository</title>
+
+
 </head>
 
 <body>
 	<header>A list of Reviews</header>
-
-
-	
 	<h2>All Reviews</h2>
 	<ul th:each="review:${reviews}">
 		<li>
 			<a th:href="@{/review(id=${review.id})}" th:text="${review.name}"/>
 		</li>
 	</ul>
+
+	<a href="http://localhost:8080/categories">View categories</a>
+
+
 
 </body>
 </html>

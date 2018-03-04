@@ -38,11 +38,13 @@ public class ReviewSiteFSController {
 			return "categories";
 		}
 		
-//		@RequestMapping("category")
-//		public String getMemoirs(@RequestParam long id, Model model) {
-//			model.addAttribute("category",categoryRepo.findOne(id));
-//			return "category";
-//		}
+		@RequestMapping("category")
+		public String getReviews(@RequestParam long id, Model model) {
+			Category selectedCategory = categoryRepo.findOne(id); 
+			model.addAttribute("selectedCategory", selectedCategory); 
+			model.addAttribute("reviews", reviewRepo.findByCategory(selectedCategory)); 
+			return "category";
+		}
 }
 
 

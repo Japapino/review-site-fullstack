@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>By Category</title>
 
-<title>By Category</title>
 </head>
 <body>
+	<h1>Categories</h1>
 	<ul th:each="category:${categories}">
 		<li>
 			<a th:href="@{/category(id=${category.id})}" th:text="${category.category}"/>
 		</li>
 	</ul>
+	<a href="http://localhost:8080/reviews">Back to home</a>
 
 </body>
 </html>
