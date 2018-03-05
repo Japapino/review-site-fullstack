@@ -5,10 +5,36 @@
 }
 header,footer{
 	padding: 1rem;
+	max-height: 5rem; 
 }
 
 header{
 	grid-column: 1/-1;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
+}
+
+.main{
+	display: grid; 
+	grid-template-columns: 1fr 9fr; 
+	grid-gap: 1rem; 
+}
+
+.navigation{
+	display:flex; 
+	flex-direction: column; 
+	justify-content: flex-start; 
+}
+
+.list{
+	display: flex;
+	flex-direction: column; 
+	justify-content: center; 
+}
+
+ul li{
+	display: flex; 
+	justify-text: center; 
+}
+body{
 }

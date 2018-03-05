@@ -1,18 +1,30 @@
 *{
 	box-sizing: border-box;
 	margin: 0;
-	padding: 0;
+	padding: 5rem;
+
 }
 header,footer{
 	padding: 1rem;
+
 }
 
 header{
 	grid-column: 1/-1;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 }
 
 body{
-	display: grid;
+
+}
+
+.main{
+	display: flex;
+	justify-content: column; 
+}
+
+.list{
+	display:flex;
+	justify-content: column; 
 }

@@ -25,5 +25,14 @@ small{
 }
 
 body{
-	background-color: slategray; 
+    border-width: 0rem 0.75rem;
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+}
+main{
+	border-width: 0rem 0.75rem;
+    border-style: solid;
+    border-color: red;
+    background-color: darkkhaki;
 }

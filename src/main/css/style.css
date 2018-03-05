@@ -4,7 +4,10 @@
     font: 400 18px 'Roboto';
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 2rem;
+    border-width: 0rem 1rem;
+    border-style: solid;
+    border-color: black;
 }
 footer {
 }
@@ -25,7 +28,14 @@ small{
 }
 
 body{
-	background-color: slategray; 
-	border-color: black;
-	border-width: 1rem;
+    border-width: 0rem 0.75rem;
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+}
+main{
+	border-width: 0rem 0.75rem;
+    border-style: solid;
+    border-color: black;
+    background-color: darkkhaki;
 }
