@@ -13,4 +13,6 @@ public interface ReviewRepository extends CrudRepository<Review, Long>{
 	
 	@Override
 	Set<Review> findAll();
+	Iterable<Review> findByDescriptionIgnoreCaseLike(String search);
+	Iterable<Review> findByDescriptionIgnoreCaseContains(String search);
 }

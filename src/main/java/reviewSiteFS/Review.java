@@ -24,6 +24,7 @@ public class Review {
 	private String review; 
 	private String image; 
 	
+	@SuppressWarnings("unused")
 	private Review() {}
 	
 	public Review(String name, String review, Category category, Tag...tags) {
