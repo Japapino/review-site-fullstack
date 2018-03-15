@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Tag {
 	@Id
@@ -15,6 +17,7 @@ public class Tag {
 	
 	private String tag; 
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "tags")
 	private Collection<Review> reviews;
 	

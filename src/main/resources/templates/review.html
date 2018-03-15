@@ -21,7 +21,7 @@
 		<p th:text="${review.review}" />
 		
 	<h1>Tags</h1>	
-	<ul th:each="itag:${review.tags}">
+	<ul th:each="itag:${review.tags}"> //where itag is the pointer(like i), and tags is from "selectedtags" in the model
 		<li>
 			<span th:text="${itag.tag}"/>
 		</li>

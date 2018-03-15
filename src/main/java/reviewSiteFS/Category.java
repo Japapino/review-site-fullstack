@@ -9,12 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Category {
 	@Id
 	@GeneratedValue
 	private long id; 
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="category")
 	private Collection<Review> reviews;
 	private String type; 
