@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class ReviewSiteFSController {
@@ -82,7 +83,24 @@ public class ReviewSiteFSController {
 			review.addTag(tag);
 			reviewRepo.save(review); 
 			
+			//issue: refresh page
 			return "reviews";
+		}
+		
+		@RequestMapping("/remove-tag")
+		public String removeTag(@RequestParam long id, String tagName) {
+			Review review = reviewRepo.findById(id); 
+			Tag tag = tagRepo.findByTag(tagName); 
+			
+			if (tag == null) {
+				//trigger modal
+				return "reviews"; 
+			}
+			
+			review.removeTag(tag); 
+			reviewRepo.save(review); 
+			
+			return "reviews"; 
 		}
 }
 
