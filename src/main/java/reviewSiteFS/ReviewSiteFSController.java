@@ -56,7 +56,9 @@ public class ReviewSiteFSController {
 		
 		@RequestMapping("/sort-reviews")
 		public String sortAllCourses(Model model) {
+			Collection<Tag> tags = tagRepo.findAll(); 
 			model.addAttribute("reviews", reviewRepo.findAllByOrderByNameAsc());
+			model.addAttribute("tags",tags); 
 			return "reviews"; 
 		}
 		
