@@ -49,6 +49,22 @@ public class ReviewSiteFSController {
 			model.addAttribute("reviews", reviewRepo.findByCategory(selectedCategory)); 
 			return "category";
 		}
+		
+		//sort
+		@RequestMapping("/sort-reviews")
+		public String sortAllCourses(Model model) {
+			model.addAttribute("reviews", reviewRepo.findAllByOrderByNameAsc());
+			return "reviews"; 
+		}
+		
+		//find by tag
+		@RequestMapping("find-by-tag")
+			public String findReviewByTag(String tagName, Model model) {
+				Tag tag = tagRepo.findByTag(tagName);
+				model.addAttribute("reviews", reviewRepo.findByTags(tag));
+				return "/tag"; 
+			}
+		
 }
 
 
