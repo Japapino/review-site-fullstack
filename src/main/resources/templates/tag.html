@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>By Tag</title>
+</head>
+<body>
+<content>
+	<h1>Tag</h1>
+
+	<ul th:each="review:${reviews}">
+		<li>
+			<img th:src="${review.image}" style="height: 50px; width: auto;" />
+			<a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a>
+		</li>
+	</ul>
+	<div>
+	<h2>Navigation</h2>
+		<a href="http://localhost:8080/categories">Back</a>
+		<a href="http://localhost:8080/reviews">Back to home</a>
+	</div>
+</content>
+</body>
+</html>

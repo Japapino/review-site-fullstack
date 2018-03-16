@@ -25,10 +25,27 @@
 						th:text="${review.name}" /></li>
 				</ul>
 			</article>
+
+
+			<form method="POST">
+				<div>
+					<label>Enter Tag:</label> <input type="text" name="tagName" />
+				</div>
+				<div>
+					<button th:formaction="@{/find-by-tag}">Find Reviews</button>
+				</div>
+			</form>
+
+
+			<form method="GET">
+				<div>
+					<button th:formaction="@{/sort-reviews}">Sort</button>
+				</div>
+			</form>
 		</section>
 	</div>
 </body>
 <footer>
-	<small>Â© 2018</small>
+	<small>© 2018</small>
 </footer>
 </html>
