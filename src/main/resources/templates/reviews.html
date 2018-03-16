@@ -26,6 +26,13 @@
 				</ul>
 			</article>
 
+			<article class="tag-list">
+				<h2>All Tags</h2>
+				<ul th:each="itag:${tags}">
+					<li><span th:text="${itag.tag}" /></li>
+				</ul>
+			</article>
+
 
 			<form method="POST">
 				<div>

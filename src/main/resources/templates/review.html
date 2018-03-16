@@ -3,30 +3,44 @@
 <html>
 
 <head>
-	<title>A Review</title>
+<title>A Review</title>
 
 </head>
 
 <body>
 
-	
-		<header>
-			<h1><span th:text="${review.Name}"/></h1>
 
-			<img th:src="${review.image}" style="height: 300px; width: auto;" />
-		</header>
+	<header>
+		<h1>
+			<span th:text="${review.Name}" />
+		</h1>
 
-		<p th:text="${review.name}" />
+		<img th:src="${review.image}" style="height: 300px; width: auto;" />
+	</header>
 
-		<p th:text="${review.review}" />
-		
-	<h1>Tags</h1>	
+	<p th:text="${review.name}" />
+
+	<p th:text="${review.review}" />
+
+	<h1>Tags</h1>
 	<ul th:each="itag:${review.tags}">
-		<li>
-			<span th:text="${itag.tag}"/>
-		</li>
+		<li><span th:text="${itag.tag}" />	</li>
 	</ul>
-		<a href="http://localhost:8080/reviews">Back to home</a>
+
+	<form method="POST">
+		<h2>Add Tag</h2>
+		<div>
+			<label>Enter new tag here: </label> <input type="text" name="tagName" />
+		</div>
+		<div>
+			<button th:formaction="@{/add-tag}">Add</button>
+		</div>
+		
+	</form>
+	
+	
+
+	<a href="http://localhost:8080/reviews">Back to home</a>
 
 </body>
 </html>

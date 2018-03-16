@@ -68,6 +68,10 @@ public class Review {
 		return ((Long) id).hashCode();
 	}
 
+	public void addTag(Tag newTag) {
+		tags.add(newTag);
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -80,4 +84,5 @@ public class Review {
 
 		return id == ((Review) obj).id;
 	}
+
 }

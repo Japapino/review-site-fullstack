@@ -24,7 +24,9 @@ public class ReviewSiteFSController {
 		
 		@RequestMapping(value = "reviews")
 		public String getAllReviews(Model model, Model model1) {
+			Collection<Tag> tags = tagRepo.findAll(); 
 			model.addAttribute("reviews",reviewRepo.findAll());
+			model.addAttribute("tags",tags); 
 			return "reviews";
 		}
 		
@@ -42,6 +44,7 @@ public class ReviewSiteFSController {
 			return "categories";
 		}
 		
+		
 		@RequestMapping("category")
 		public String getReviews(@RequestParam long id, Model model) {
 			Category selectedCategory = categoryRepo.findOne(id); 
@@ -57,7 +60,6 @@ public class ReviewSiteFSController {
 			return "reviews"; 
 		}
 		
-		
 		@RequestMapping("/find-by-tag")
 			public String findReviewByTag(String tagName, Model model) {
 				Tag tag = tagRepo.findByTag(tagName);
@@ -65,6 +67,22 @@ public class ReviewSiteFSController {
 				return "/tag"; 
 			}
 		
+		@RequestMapping("/add-tag")
+			public String addTag(@RequestParam(value = "id") long id, String reviewName, String tagName) {
+			Review review = reviewRepo.findById(id); 
+			Tag tag = tagRepo.findByTag(tagName); 
+			
+			if (tag == null) {
+				tag = new Tag(tagName); 
+				tagRepo.save(tag); 
+			}
+			
+			review.addTag(tag);
+			reviewRepo.save(review); 
+			
+			return "redirect:/reviews";
+		}
 }
+
 
 
