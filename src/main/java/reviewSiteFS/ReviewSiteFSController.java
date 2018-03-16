@@ -22,7 +22,7 @@ public class ReviewSiteFSController {
 		TagRepository tagRepo; 
 		
 		
-		@RequestMapping(value = "reviews")
+		@RequestMapping("reviews")
 		public String getAllReviews(Model model, Model model1) {
 			Collection<Tag> tags = tagRepo.findAll(); 
 			model.addAttribute("reviews",reviewRepo.findAll());
@@ -38,7 +38,7 @@ public class ReviewSiteFSController {
 			return "review";
 		}
 		
-		@RequestMapping(value="categories")
+		@RequestMapping("categories")
 		public String getCategories(Model model) {
 			model.addAttribute("categories",categoryRepo.findAll());
 			return "categories";
@@ -68,7 +68,7 @@ public class ReviewSiteFSController {
 			}
 		
 		@RequestMapping("/add-tag")
-			public String addTag(@RequestParam(value = "id") long id, String reviewName, String tagName) {
+			public String addTag(@RequestParam long id, String tagName) {
 			Review review = reviewRepo.findById(id); 
 			Tag tag = tagRepo.findByTag(tagName); 
 			
@@ -80,7 +80,7 @@ public class ReviewSiteFSController {
 			review.addTag(tag);
 			reviewRepo.save(review); 
 			
-			return "redirect:/reviews";
+			return "reviews";
 		}
 }
 

@@ -33,7 +33,7 @@
 			<label>Enter new tag here: </label> <input type="text" name="tagName" />
 		</div>
 		<div>
-			<button th:formaction="@{/add-tag}">Add</button>
+			<button th:formaction="@{/add-tag(id=${review.id})}">Add</button>
 		</div>
 		
 	</form>

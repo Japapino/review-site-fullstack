@@ -44,7 +44,7 @@ public class ReviewPopulator  implements CommandLineRunner{
 		
 		Review superman = new Review("Superman","Super review",memoir,action,scifi,greatSoundtrack); 
 		Review sherlock = new Review("Sherlock","Sherlock review",historicalDocumentary,documentary,mystery,action); 
-		Review batman = new Review("Batman","Batman review",sportsDocumentary); 
+		Review batman = new Review("Batman","Batman review",sportsDocumentary,action,sports); 
 
 		sherlock.setImage("./images/sherlock.jpg");
 		superman.setImage("./images/superman.png");
