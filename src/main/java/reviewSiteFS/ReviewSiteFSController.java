@@ -84,6 +84,21 @@ public class ReviewSiteFSController {
 			
 			return "reviews";
 		}
+		
+		@RequestMapping("/remove-tag")
+			public String removeTag(@RequestParam long id, String tagName) {
+			Review review = reviewRepo.findById(id); 
+			Tag tag = tagRepo.findByTag(tagName); 
+			
+			if(tag == null) {
+				return "reviews"; 
+			}
+			
+			review.removeTag(tag);
+			reviewRepo.save(review); 
+			
+			return "reviews"; 
+		}
 }
 
 

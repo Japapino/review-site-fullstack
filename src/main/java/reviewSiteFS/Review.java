@@ -63,15 +63,20 @@ public class Review {
 	}
 	
 	
-	@Override
-	public int hashCode() {
-		return ((Long) id).hashCode();
-	}
 
 	public void addTag(Tag newTag) {
 		tags.add(newTag);
 	}
+
+	public void removeTag(Tag tag) {
+		tags.remove(tag); 
+	}
 	
+	@Override
+	public int hashCode() {
+		return ((Long) id).hashCode();
+
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -84,5 +89,6 @@ public class Review {
 
 		return id == ((Review) obj).id;
 	}
+
 
 }
