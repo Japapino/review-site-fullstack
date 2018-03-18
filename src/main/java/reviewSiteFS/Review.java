@@ -72,10 +72,6 @@ public class Review {
 		tags.add(newTag);
 	}
 	
-	public void removeTag(Tag tag) {
-		tags.remove(tag); 
-	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -88,6 +84,5 @@ public class Review {
 
 		return id == ((Review) obj).id;
 	}
-
 
 }
