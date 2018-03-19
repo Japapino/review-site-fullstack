@@ -18,6 +18,9 @@ public class ReviewPopulator  implements CommandLineRunner{
 	@Resource
 	private TagRepository tagRepo; 
 	
+	@Resource
+	private CommentRepository commentRepo; 
+	
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -42,6 +45,7 @@ public class ReviewPopulator  implements CommandLineRunner{
 		greatSoundtrack = tagRepo.save(greatSoundtrack); 
 		
 		
+		
 		Review superman = new Review("Superman","Super review",memoir,action,scifi,greatSoundtrack); 
 		Review sherlock = new Review("Sherlock","Sherlock review",historicalDocumentary,documentary,mystery,action); 
 		Review batman = new Review("Batman","Batman review",sportsDocumentary,action,sports); 
@@ -50,11 +54,17 @@ public class ReviewPopulator  implements CommandLineRunner{
 		superman.setImage("./images/superman.png");
 		batman.setImage("./images/batman.jpg");
 		
-		batman.addComment("was good");
-		batman.addComment("would watch again");
-		sherlock.addComment("great"); 
-		superman.addComment("good"); 
+		Comment first = new Comment("test1","was ok"); 
+		Comment	second = new Comment("test2", "was good");
+		Comment third = new Comment("test3", "i liked da movie");
 		
+		commentRepo.save(first);
+		commentRepo.save(second); 
+		commentRepo.save(third); 
+		
+		sherlock.addComment(first);
+		batman.addComment(second);
+		superman.addComment(third);
 		
 		superman = reviewRepo.save(superman); 
 		sherlock = reviewRepo.save(sherlock); 

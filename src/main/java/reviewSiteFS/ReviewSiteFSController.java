@@ -34,7 +34,7 @@ public class ReviewSiteFSController {
 		@RequestMapping("review")
 		public String getAReview(@RequestParam long id, Model model) {
 			Collection<Tag> selectedTags = reviewRepo.findOne(id).getTags();  
-			Collection<String> comments = reviewRepo.findOne(id).getComments();
+			Collection<Comment> comments = reviewRepo.findOne(id).getComments();
 			model.addAttribute("selectedTags", selectedTags);
 			model.addAttribute("review",reviewRepo.findOne(id));
 			model.addAttribute("comments", comments); 
@@ -104,13 +104,11 @@ public class ReviewSiteFSController {
 		}
 		
 		@RequestMapping("/add-comment")
-		public String addComment(@RequestParam long id, String comment) {
+		public String addComment(@RequestParam long id, String user, String text) {
 			Review review = reviewRepo.findById(id); 
-			if (comment == null) {
-				return "reviews"; 
-			}
-			
-			review.addComment(comment);
+			Comment temp = new Comment(user,text); 
+
+			review.addComment(temp);
 			reviewRepo.save(review);
 			return "reviews";
 		}

@@ -1,5 +1,6 @@
 package reviewSiteFS;
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 @Entity
 public class Review {
 	
@@ -27,9 +29,8 @@ public class Review {
 	private String review; 
 	private String image; 
 
-	@Column
-	@ElementCollection(targetClass=String.class)
-	private Collection<String> comments;
+	@OneToMany(mappedBy="review")
+	private Collection<Comment> comments;
 	
 	@SuppressWarnings("unused")
 	private Review() {}
@@ -78,11 +79,11 @@ public class Review {
 		tags.remove(tag); 
 	}
 	
-	public void addComment(String comment) {
+	public void addComment(Comment comment) {
 		comments.add(comment); 
 	}
 	
-	public Collection<String> getComments(){
+	public Collection<Comment> getComments(){
 		return comments; 
 	}
 	
