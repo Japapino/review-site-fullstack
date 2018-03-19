@@ -1,7 +1,10 @@
 package reviewSiteFS;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,6 +26,10 @@ public class Review {
 	private String name; 
 	private String review; 
 	private String image; 
+
+	@Column
+	@ElementCollection(targetClass=String.class)
+	private Collection<String> comments;
 	
 	@SuppressWarnings("unused")
 	private Review() {}
@@ -61,8 +68,7 @@ public class Review {
 	public String getImage() {
 		return image; 
 	}
-	
-	
+
 
 	public void addTag(Tag newTag) {
 		tags.add(newTag);
@@ -70,6 +76,14 @@ public class Review {
 
 	public void removeTag(Tag tag) {
 		tags.remove(tag); 
+	}
+	
+	public void addComment(String comment) {
+		comments.add(comment); 
+	}
+	
+	public Collection<String> getComments(){
+		return comments; 
 	}
 	
 	@Override

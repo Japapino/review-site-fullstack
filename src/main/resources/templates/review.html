@@ -24,7 +24,7 @@
 
 	<h1>Tags</h1>
 	<ul th:each="itag:${review.tags}">
-		<li><span th:text="${itag.tag}" />	</li>
+		<li><span th:text="${itag.tag}" /></li>
 	</ul>
 
 	<form method="POST">
@@ -36,16 +36,20 @@
 			<button th:formaction="@{/add-tag(id=${review.id})}">Add</button>
 		</div>
 	</form>
-	
+
 	<form method="POST">
 		<h2>Remove tag</h2>
 		<div>
 			<label>Tag to remove: </label> <input type="text" name="tagName" />
 		</div>
 		<div>
-		<button th:formaction="@{/remove-tag(id=${review.id})}">Remove</button>
+			<button th:formaction="@{/remove-tag(id=${review.id})}">Remove</button>
 		</div>
 	</form>
+	
+	<div th:each="comment: ${comments}">
+		<span th:text="${comment.comments}" />
+	</div>
 
 	<a href="http://localhost:8080/reviews">Back to home</a>
 

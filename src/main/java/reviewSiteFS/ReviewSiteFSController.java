@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ReviewSiteFSController {
@@ -33,8 +34,10 @@ public class ReviewSiteFSController {
 		@RequestMapping("review")
 		public String getAReview(@RequestParam long id, Model model) {
 			Collection<Tag> selectedTags = reviewRepo.findOne(id).getTags();  
+			Collection<String> comments = reviewRepo.findOne(id).getComments();
 			model.addAttribute("selectedTags", selectedTags);
 			model.addAttribute("review",reviewRepo.findOne(id));
+			model.addAttribute("comments", comments); 
 			return "review";
 		}
 		
@@ -86,7 +89,7 @@ public class ReviewSiteFSController {
 		}
 		
 		@RequestMapping("/remove-tag")
-			public String removeTag(@RequestParam long id, String tagName) {
+		public String removeTag(@RequestParam long id, String tagName) {
 			Review review = reviewRepo.findById(id); 
 			Tag tag = tagRepo.findByTag(tagName); 
 			
@@ -98,6 +101,18 @@ public class ReviewSiteFSController {
 			reviewRepo.save(review); 
 			
 			return "reviews"; 
+		}
+		
+		@RequestMapping("/add-comment")
+		public String addComment(@RequestParam long id, String comment) {
+			Review review = reviewRepo.findById(id); 
+			if (comment == null) {
+				return "reviews"; 
+			}
+			
+			review.addComment(comment);
+			reviewRepo.save(review);
+			return "reviews";
 		}
 }
 

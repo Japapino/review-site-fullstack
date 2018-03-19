@@ -50,6 +50,12 @@ public class ReviewPopulator  implements CommandLineRunner{
 		superman.setImage("./images/superman.png");
 		batman.setImage("./images/batman.jpg");
 		
+		batman.addComment("was good");
+		batman.addComment("would watch again");
+		sherlock.addComment("great"); 
+		superman.addComment("good"); 
+		
+		
 		superman = reviewRepo.save(superman); 
 		sherlock = reviewRepo.save(sherlock); 
 		batman = reviewRepo.save(batman); 
