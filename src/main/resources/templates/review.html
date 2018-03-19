@@ -32,6 +32,7 @@
 		<div>
 			<label>Enter new tag here: </label> <input type="text" name="tagName" />
 		</div>
+
 		<div>
 			<button type="submit" th:formaction="@{/add-tag(id=${review.id})}">Add</button>
 		</div>
@@ -42,22 +43,24 @@
 		<div>
 			<label>Tag to remove: </label> <input type="text" name="tagName" />
 		</div>
+
 		<div>
 			<button th:formaction="@{/remove-tag(id=${review.id})}">Remove</button>
 		</div>
 	</form>
 
-	<div th:each="comment:${comments}">
-		<span th:text="${comment.text}" />
-	</div>
+	<ul th:each="comment:${review.comments}">
+		<li><span th:text="${comment.text}" /></li>
+	</ul>
 
 	<div>
 		<h2>Add Comment</h2>
 		<form method="POST">
 			<div>
-				<label>User: </label> <input type="text" name="user" />
-				<label>Comment: </label> <input type="text" name="text" />
+				<label>User: </label> <input type="text" name="user" /> <label>Comment:
+				</label> <input type="text" name="text" />
 			</div>
+
 			<div>
 				<button th:formaction="@{/add-comment(id=${review.id})}">Comment</button>
 			</div>

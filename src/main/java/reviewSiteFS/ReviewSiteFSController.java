@@ -88,7 +88,7 @@ public class ReviewSiteFSController {
 			review.addTag(tag);
 			reviewRepo.save(review); 
 			
-			return "review";
+			return "redirect:/review?id=" + id;
 		}
 		
 		@RequestMapping("/remove-tag")
@@ -103,7 +103,7 @@ public class ReviewSiteFSController {
 			review.removeTag(tag);
 			reviewRepo.save(review); 
 			
-			return "reviews"; 
+			return "redirect:/review?id=" + id;
 		}
 		
 		@RequestMapping("/add-comment")
@@ -112,7 +112,7 @@ public class ReviewSiteFSController {
 			Comment temp = new Comment(user,text); 
 			temp = commentRepo.save(temp); 
 			reviewRepo.save(review);
-			return "redirect:/review/id";
+			return "redirect:/review?id=" + id;
 		}
 }
 
