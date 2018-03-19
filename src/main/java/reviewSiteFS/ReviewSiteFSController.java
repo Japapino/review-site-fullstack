@@ -22,6 +22,9 @@ public class ReviewSiteFSController {
 		@Resource
 		TagRepository tagRepo; 
 		
+		@Resource
+		CommentRepository commentRepo; 
+		
 		
 		@RequestMapping("reviews")
 		public String getAllReviews(Model model, Model model1) {
@@ -85,7 +88,7 @@ public class ReviewSiteFSController {
 			review.addTag(tag);
 			reviewRepo.save(review); 
 			
-			return "reviews";
+			return "review";
 		}
 		
 		@RequestMapping("/remove-tag")
@@ -107,10 +110,9 @@ public class ReviewSiteFSController {
 		public String addComment(@RequestParam long id, String user, String text) {
 			Review review = reviewRepo.findById(id); 
 			Comment temp = new Comment(user,text); 
-
-			review.addComment(temp);
+			temp = commentRepo.save(temp); 
 			reviewRepo.save(review);
-			return "reviews";
+			return "redirect:/review/id";
 		}
 }
 

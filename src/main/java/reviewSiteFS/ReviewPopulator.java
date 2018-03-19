@@ -44,8 +44,6 @@ public class ReviewPopulator  implements CommandLineRunner{
 		sports = tagRepo.save(sports); 
 		greatSoundtrack = tagRepo.save(greatSoundtrack); 
 		
-		
-		
 		Review superman = new Review("Superman","Super review",memoir,action,scifi,greatSoundtrack); 
 		Review sherlock = new Review("Sherlock","Sherlock review",historicalDocumentary,documentary,mystery,action); 
 		Review batman = new Review("Batman","Batman review",sportsDocumentary,action,sports); 
@@ -54,17 +52,22 @@ public class ReviewPopulator  implements CommandLineRunner{
 		superman.setImage("./images/superman.png");
 		batman.setImage("./images/batman.jpg");
 		
+		
+		superman = reviewRepo.save(superman); 
+		sherlock = reviewRepo.save(sherlock); 
+		batman = reviewRepo.save(batman); 
+		
 		Comment first = new Comment("test1","was ok"); 
 		Comment	second = new Comment("test2", "was good");
 		Comment third = new Comment("test3", "i liked da movie");
 		
-		commentRepo.save(first);
-		commentRepo.save(second); 
-		commentRepo.save(third); 
-		
-		sherlock.addComment(first);
-		batman.addComment(second);
-		superman.addComment(third);
+//		first = commentRepo.save(first);
+//		second = commentRepo.save(second); 
+//		third = commentRepo.save(third); 
+//		
+//		sherlock.addComment(first);
+//		batman.addComment(second);
+//		superman.addComment(third);
 		
 		superman = reviewRepo.save(superman); 
 		sherlock = reviewRepo.save(sherlock); 
