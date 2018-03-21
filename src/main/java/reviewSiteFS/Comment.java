@@ -18,7 +18,8 @@ public class Comment {
 
 	public Comment () {}
 	
-	public Comment(String user, String text) {
+	public Comment(Review review, String user, String text) {
+		this.review = review; 
 		this.user = user; 
 		this.text = text; 
 	}

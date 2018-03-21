@@ -109,8 +109,8 @@ public class ReviewSiteFSController {
 		@RequestMapping("/add-comment")
 		public String addComment(@RequestParam long id, String user, String text) {
 			Review review = reviewRepo.findById(id); 
-			Comment temp = new Comment(user,text); 
-			temp = commentRepo.save(temp); 
+			Comment temp = new Comment(review, user, text);
+			commentRepo.save(temp);
 			reviewRepo.save(review);
 			return "redirect:/review?id=" + id;
 		}
