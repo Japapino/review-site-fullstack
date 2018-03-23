@@ -57,17 +57,14 @@ public class ReviewPopulator  implements CommandLineRunner{
 		sherlock = reviewRepo.save(sherlock); 
 		batman = reviewRepo.save(batman); 
 		
-		Comment first = new Comment("test1","was ok"); 
-		Comment	second = new Comment("test2", "was good");
-		Comment third = new Comment("test3", "i liked da movie");
+		Comment first = new Comment(batman,"test1","was ok"); 
+		Comment	second = new Comment(superman,"test2", "was good");
+		Comment third = new Comment(sherlock,"test3", "i liked da movie");
 		
-//		first = commentRepo.save(first);
-//		second = commentRepo.save(second); 
-//		third = commentRepo.save(third); 
-//		
-//		sherlock.addComment(first);
-//		batman.addComment(second);
-//		superman.addComment(third);
+		first = commentRepo.save(first);
+		second = commentRepo.save(second); 
+		third = commentRepo.save(third); 
+
 		
 		superman = reviewRepo.save(superman); 
 		sherlock = reviewRepo.save(sherlock); 
