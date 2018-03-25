@@ -79,9 +79,6 @@ public class Review {
 		tags.remove(tag); 
 	}
 	
-//	public void addComment(Comment comment) {
-//		comments.add(comment); 
-//	}
 	
 	public Collection<Comment> getComments(){
 		return comments; 
